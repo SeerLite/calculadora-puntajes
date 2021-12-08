@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input {
+	@apply bg-gray-900 border-4 border-gray-400 placeholder-gray-700;
+}
+
+/* No mostrar flechas en inputs numéricos */
+input[type=number] {
+	appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	appearance: none;
+	margin: 0;
+}
