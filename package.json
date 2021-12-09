@@ -3,7 +3,8 @@
   "description": "",
   "scripts": {
     "start": "snowpack dev",
-    "build": "snowpack build"
+    "build": "snowpack build",
+    "deploy": "snowpack build && gh-pages -d ./build -m 'Update'"
   },
   "author": "",
   "license": "AGPL-3.0-or-later",
@@ -12,6 +13,7 @@
     "@snowpack/plugin-typescript": "^1.2.1",
     "autoprefixer": "^10.4.0",
     "cssnano": "^5.0.12",
+    "gh-pages": "^3.2.3",
     "postcss": "^8.4.4",
     "snowpack": "^3.8.8",
     "tailwindcss": "^2.2.19",
