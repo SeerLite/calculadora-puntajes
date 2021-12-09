@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 input {
-	@apply bg-gray-900 border-4 border-gray-400 placeholder-gray-700;
+	@apply bg-gray-900 border-2 border-gray-400 placeholder-gray-700 p-1.5;
 }
 
 /* No mostrar flechas en inputs numéricos */
