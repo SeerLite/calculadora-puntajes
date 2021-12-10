@@ -16,7 +16,7 @@ function actualizar_puntaje() {
 	);
 
 	const salida = document.getElementById("puntaje-obtenido");
-	if (salida === null) {
+	if (!salida) {
 		throw new Error("Elemento #puntaje-obtenido no existe");
 	}
 	salida.innerText = String(puntaje_obtenido);
@@ -25,7 +25,12 @@ function actualizar_puntaje() {
 document.body.addEventListener("input", (evento) => {
 	const elemento = evento.target as HTMLInputElement;
 	const valor = Number(elemento.value);
-	const maximo = [...elemento.parentElement!.classList].includes("puntajes") ? 850 : 100;
+	let clasesParent;
+	if (!elemento.parentElement || !(clasesParent = Array.from(elemento.parentElement.classList))) {
+		// No sé si estoy usando los errors correctamente
+		throw new Error(`${elemento} no tiene parents`);
+	}
+	const maximo = clasesParent.includes("puntajes") ? 850 : 100;
 	const minimo = 0;
 	if (valor > maximo) {
 		elemento.value = String(Math.min(Number(elemento!.value.slice(0, 3)), maximo));
