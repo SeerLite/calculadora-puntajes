@@ -24,16 +24,32 @@ function actualizar_puntaje() {
 
 document.body.addEventListener("input", (evento) => {
 	const elemento = evento.target as HTMLInputElement;
+	elemento.value = elemento.value.slice(0, 3);
+
 	const valor = Number(elemento.value);
+	if (valor !== 0) {
+		elemento.value = String(valor);
+	}
+
+	if (elemento.value.length < 3) return;
+
 	let clasesParent;
 	if (!elemento.parentElement || !(clasesParent = Array.from(elemento.parentElement.classList))) {
 		// No sé si estoy usando los errors correctamente
 		throw new Error(`${elemento} no tiene parents`);
 	}
-	const maximo = clasesParent.includes("puntajes") ? 850 : 100;
-	const minimo = 0;
+
+	let maximo, minimo;
+	if (clasesParent.includes("puntajes")) {
+		maximo = 850;
+		minimo = 150;
+	} else {
+		maximo = 100;
+		minimo = 0;
+	}
+
 	if (valor > maximo) {
-		elemento.value = String(Math.min(Number(elemento!.value.slice(0, 3)), maximo));
+		elemento.value = String(Math.min(valor, maximo));
 	} else if (valor < minimo){
 		elemento.value = String(minimo);
 	}
