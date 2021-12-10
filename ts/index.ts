@@ -27,6 +27,11 @@ document.body.addEventListener("input", (evento) => {
 	elemento.value = elemento.value.slice(0, 3);
 
 	const valor = Number(elemento.value);
+
+	if (isNaN(valor)) {
+		elemento.value = "";
+	}
+
 	if (valor !== 0) {
 		elemento.value = String(valor);
 	}
