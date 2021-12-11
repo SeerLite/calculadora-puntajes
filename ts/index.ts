@@ -7,12 +7,14 @@ function calcular_puntaje(puntajes: Array<number>, porcentajes: Array<number>): 
 }
 
 function actualizar_puntaje() {
-	const inputs_porcentajes = document.querySelectorAll(".porcentajes input");
-	const inputs_puntajes = document.querySelectorAll(".puntajes input");
+	const inputs_porcentajes: Array<HTMLInputElement> =
+		Array.from(document.querySelectorAll(".porcentajes input"));
+	const inputs_puntajes: Array<HTMLInputElement> =
+		Array.from(document.querySelectorAll(".puntajes input"));
 
 	const puntaje_obtenido = calcular_puntaje(
-		[...inputs_porcentajes].map((elemento) => Number((elemento as HTMLInputElement).value)),
-		[...inputs_puntajes].map((elemento) => Number((elemento as HTMLInputElement).value))
+		inputs_porcentajes.map((elemento) => Number(elemento.value)),
+		inputs_puntajes.map((elemento) => Number(elemento.value))
 	);
 
 	const salida = document.getElementById("puntaje-obtenido");
