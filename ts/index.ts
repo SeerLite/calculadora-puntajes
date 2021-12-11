@@ -7,15 +7,30 @@ function calcular_puntaje(puntajes: Array<number>, porcentajes: Array<number>): 
 }
 
 function actualizar_puntaje() {
-	const inputs_porcentajes: Array<HTMLInputElement> =
-		Array.from(document.querySelectorAll(".porcentajes input"));
 	const inputs_puntajes: Array<HTMLInputElement> =
 		Array.from(document.querySelectorAll(".puntajes input"));
 
-	const puntaje_obtenido = calcular_puntaje(
-		inputs_porcentajes.map((elemento) => Number(elemento.value)),
-		inputs_puntajes.map((elemento) => Number(elemento.value))
-	);
+	let valores_porcentajes = inputs_porcentajes_recientes.map((elemento) => Number(elemento.value));
+	const valores_puntajes = inputs_puntajes.map((elemento) => Number(elemento.value));
+
+	if (valores_porcentajes.reduce((acc, x) => acc + x) !== 100) {
+		for (let [i, porcentaje] of valores_porcentajes.entries()) {
+			const diferencia = 100 - valores_porcentajes.reduce((acc, x) => acc + x);
+			if (diferencia >= 0 || porcentaje + diferencia >= 0) {
+				valores_porcentajes[i] = porcentaje + diferencia;
+				break;
+			} else {
+				valores_porcentajes[i] = 0;
+			}
+		}
+
+		// slice para no tocar el último elemento modificado
+		for (let [i, porcentaje] of valores_porcentajes.slice(0, -1).entries()) {
+			inputs_porcentajes_recientes[i].value = String(porcentaje);
+		}
+	}
+
+	const puntaje_obtenido = calcular_puntaje( valores_porcentajes, valores_puntajes);
 
 	const salida = document.getElementById("puntaje-obtenido");
 	if (!salida) {
@@ -26,6 +41,9 @@ function actualizar_puntaje() {
 
 document.body.addEventListener("input", (evento) => {
 	const elemento = evento.target as HTMLInputElement;
+	inputs_porcentajes_recientes.splice(inputs_porcentajes_recientes.indexOf(elemento), 1);
+	inputs_porcentajes_recientes.push(elemento);
+
 	elemento.value = elemento.value.slice(0, 3);
 
 	const valor = Number(elemento.value);
@@ -59,9 +77,7 @@ document.body.addEventListener("input", (evento) => {
 
 document.body.addEventListener("input", actualizar_puntaje);
 
-// TODO: Modificar porcentajes para que el total esté
-// siempre en el rango 0-100. Modificar el menos reciente.
-const inputs_porcentaje_recientes = new Set(
+const inputs_porcentajes_recientes: Array<HTMLInputElement> = Array.from(
 	document.querySelectorAll(".porcentajes input")
 );
 
