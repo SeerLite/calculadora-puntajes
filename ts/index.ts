@@ -1,3 +1,7 @@
+function clamp(input: number, min: number, max: number): number {
+	return Math.min(Math.max(input, min), max);
+}
+
 function calcular_puntaje(puntajes: Array<number>, porcentajes: Array<number>): number {
 	let puntaje_final = 0;
 	for (let [i, puntaje] of puntajes.entries()) {
@@ -11,10 +15,10 @@ function actualizar_puntaje() {
 		Array.from(document.querySelectorAll(".puntajes input"));
 
 	const valores_porcentajes = inputs_porcentajes_recientes.map(
-		(elemento) => Math.min(Math.max(Number(elemento.value), 0), 100)
+		(elemento) => clamp(Number(elemento.value), 0, 100)
 	);
 	const valores_puntajes = inputs_puntajes.map(
-		(elemento) => Math.min(Math.max(Number(elemento.value), 150), 850)
+		(elemento) => clamp(Number(elemento.value), 150, 850)
 	);
 
 	if (valores_porcentajes.reduce((acc, x) => acc + x) !== 100) {
