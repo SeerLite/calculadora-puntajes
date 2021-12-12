@@ -111,11 +111,4 @@ const inputs_porcentajes_recientes: Array<HTMLInputElement> = Array.from(
 );
 inputs_porcentajes_recientes.reverse();
 
-for (let input of inputs_porcentajes_recientes) {
-	input.addEventListener("focus", (evento) => {
-		inputs_porcentajes_recientes.splice(inputs_porcentajes_recientes.indexOf(input), 1);
-		inputs_porcentajes_recientes.push(input);
-	})
-}
-
 actualizar_puntaje();
