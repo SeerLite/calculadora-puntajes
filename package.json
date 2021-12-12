@@ -5,7 +5,7 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "deploy": "vite build && gh-pages -d ./dist -m 'Update'"
+    "deploy": "vite build --base=/calculadora-puntajes/ && gh-pages -d ./dist -m 'Update'"
   },
   "author": "",
   "license": "AGPL-3.0-or-later",
