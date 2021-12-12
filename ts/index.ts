@@ -10,8 +10,12 @@ function actualizar_puntaje() {
 	const inputs_puntajes: Array<HTMLInputElement> =
 		Array.from(document.querySelectorAll(".puntajes input"));
 
-	let valores_porcentajes = inputs_porcentajes_recientes.map((elemento) => Number(elemento.value));
-	const valores_puntajes = inputs_puntajes.map((elemento) => Number(elemento.value));
+	const valores_porcentajes = inputs_porcentajes_recientes.map(
+		(elemento) => Math.min(Math.max(Number(elemento.value), 0), 100)
+	);
+	const valores_puntajes = inputs_puntajes.map(
+		(elemento) => Math.min(Math.max(Number(elemento.value), 150), 850)
+	);
 
 	if (valores_porcentajes.reduce((acc, x) => acc + x) !== 100) {
 		for (let [i, porcentaje] of valores_porcentajes.entries()) {
@@ -78,25 +82,25 @@ document.body.addEventListener("input", (evento) => {
 		elemento.value = String(valor);
 	}
 
-	if (elemento.value.length < 3) return;
+	if (elemento.value.length >= 3) {
+		let maximo, minimo;
+		if (categoria === Categoria.Puntaje) {
+			maximo = 850;
+			minimo = 150;
+		} else {
+			maximo = 100;
+			minimo = 0;
+		}
 
-	let maximo, minimo;
-	if (categoria === Categoria.Puntaje) {
-		maximo = 850;
-		minimo = 150;
-	} else {
-		maximo = 100;
-		minimo = 0;
+		if (valor > maximo) {
+			elemento.value = String(maximo);
+		} else if (valor < minimo) {
+			elemento.value = String(minimo);
+		}
 	}
 
-	if (valor > maximo) {
-		elemento.value = String(Math.min(valor, maximo));
-	} else if (valor < minimo){
-		elemento.value = String(minimo);
-	}
+	actualizar_puntaje();
 });
-
-document.body.addEventListener("input", actualizar_puntaje);
 
 const inputs_porcentajes_recientes: Array<HTMLInputElement> = Array.from(
 	document.querySelectorAll(".porcentajes input")
