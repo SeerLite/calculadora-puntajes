@@ -1,6 +1,7 @@
 {
   "name": "calculadora-puntajes",
   "description": "",
+  "private": true,
   "scripts": {
     "start": "vite",
     "build": "vite build",
@@ -17,5 +18,8 @@
     "typescript": "^4.5.2",
     "vite": "^2.7.1",
     "windicss": "^3.2.1"
-  }
+  },
+  "browserslist": [
+    "last 4 version"
+  ]
 }
