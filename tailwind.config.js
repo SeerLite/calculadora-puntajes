@@ -2,7 +2,7 @@ module.exports = {
 	mode: "jit",
 	darkMode: true,
 	purge: [
-		"./static/**/*.html",
+		"./index.html",
 		"./ts/**/*.ts",
 	],
 };
