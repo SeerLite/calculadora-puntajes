@@ -1,7 +1,7 @@
 function calcular_puntaje(puntajes: Array<number>, porcentajes: Array<number>): number {
 	let puntaje_final = 0;
-	for (let i = 0; i < Math.min(puntajes.length, porcentajes.length); i++) {
-		puntaje_final += puntajes[i] * porcentajes[i] / 100;
+	for (let [i, puntaje] of puntajes.entries()) {
+		puntaje_final += puntaje * porcentajes[i] / 100;
 	}
 	return puntaje_final;
 }
@@ -30,7 +30,7 @@ function actualizar_puntaje() {
 		}
 	}
 
-	const puntaje_obtenido = calcular_puntaje( valores_porcentajes, valores_puntajes);
+	const puntaje_obtenido = calcular_puntaje(valores_porcentajes, valores_puntajes);
 
 	const salida = document.getElementById("puntaje-obtenido");
 	if (!salida) {
