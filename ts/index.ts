@@ -36,7 +36,14 @@ function actualizar_puntaje() {
 	if (!salida) {
 		throw new Error("Elemento #puntaje-obtenido no existe");
 	}
-	salida.innerText = String(puntaje_obtenido);
+
+	const puntaje_obtenido_str = String(puntaje_obtenido);
+	if (salida.innerText !== puntaje_obtenido_str) {
+		salida.innerText = puntaje_obtenido_str;
+		const color_destacado = ["bg-gray-400", "text-green-900"];
+		salida.classList.add(...color_destacado);
+		setTimeout(() => salida.classList.remove(...color_destacado), 150);
+	}
 }
 
 document.body.addEventListener("input", (evento) => {
