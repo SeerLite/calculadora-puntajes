@@ -1,4 +1,5 @@
 import checker from "vite-plugin-checker"
+import WindiCSS from "vite-plugin-windicss"
 
 export default {
 	server: {
@@ -6,5 +7,6 @@ export default {
 	},
 	plugins: [
 		checker({ typescript: true }),
+		WindiCSS(),
 	],
 }
