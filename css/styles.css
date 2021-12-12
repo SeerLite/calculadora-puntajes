@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@windicss;
 
 input {
 	@apply bg-gray-900 border-2 border-gray-400 placeholder-gray-700 p-1.5;

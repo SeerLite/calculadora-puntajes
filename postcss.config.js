@@ -1,6 +1,6 @@
 module.exports = {
 	plugins: [
-		require("tailwindcss"),
+		require("postcss-windicss"),
 		require("autoprefixer"),
 		require("cssnano"),
 	],
