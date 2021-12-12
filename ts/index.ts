@@ -10,14 +10,14 @@ function calcular_puntaje(puntajes: Array<number>, porcentajes: Array<number>): 
 	return puntaje_final;
 }
 
-function actualizar_puntaje() {
+function actualizar_puntaje(): void {
 	const inputs_puntajes: Array<HTMLInputElement> =
 		Array.from(document.querySelectorAll(".puntajes input"));
 
-	const valores_porcentajes = inputs_porcentajes_recientes.map(
+	const valores_porcentajes: Array<number> = inputs_porcentajes_recientes.map(
 		(elemento) => clamp(Number(elemento.value), 0, 100)
 	);
-	const valores_puntajes = inputs_puntajes.map(
+	const valores_puntajes: Array<number> = inputs_puntajes.map(
 		(elemento) => clamp(Number(elemento.value), 150, 850)
 	);
 
@@ -38,7 +38,7 @@ function actualizar_puntaje() {
 		}
 	}
 
-	const puntaje_obtenido = calcular_puntaje(valores_porcentajes, valores_puntajes);
+	const puntaje_obtenido: number = calcular_puntaje(valores_porcentajes, valores_puntajes);
 
 	const salida = document.getElementById("puntaje-obtenido");
 	if (!salida) {
@@ -57,7 +57,7 @@ function actualizar_puntaje() {
 document.body.addEventListener("input", (evento) => {
 	const elemento = evento.target as HTMLInputElement;
 
-	let clasesParent;
+	let clasesParent: Array<string>;
 	if (!elemento.parentElement || !(clasesParent = Array.from(elemento.parentElement.classList))) {
 		// No sé si estoy usando los errors correctamente
 		throw new Error(`${elemento} no tiene parents`);
@@ -65,7 +65,7 @@ document.body.addEventListener("input", (evento) => {
 
 	enum Categoria {Puntaje, Porcentaje}
 
-	let categoria;
+	let categoria: Categoria;
 	if (clasesParent.includes("puntajes")) {
 		categoria = Categoria.Puntaje;
 	} else if (clasesParent.includes("porcentajes")) {
