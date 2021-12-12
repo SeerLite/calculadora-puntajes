@@ -41,8 +41,28 @@ function actualizar_puntaje() {
 
 document.body.addEventListener("input", (evento) => {
 	const elemento = evento.target as HTMLInputElement;
-	inputs_porcentajes_recientes.splice(inputs_porcentajes_recientes.indexOf(elemento), 1);
-	inputs_porcentajes_recientes.push(elemento);
+
+	let clasesParent;
+	if (!elemento.parentElement || !(clasesParent = Array.from(elemento.parentElement.classList))) {
+		// No sé si estoy usando los errors correctamente
+		throw new Error(`${elemento} no tiene parents`);
+	}
+
+	enum Categoria {Puntaje, Porcentaje}
+
+	let categoria;
+	if (clasesParent.includes("puntajes")) {
+		categoria = Categoria.Puntaje;
+	} else if (clasesParent.includes("porcentajes")) {
+		categoria = Categoria.Porcentaje;
+	} else {
+		throw new Error(`${elemento} no pertenece a ninguna categoria (puntaje/porcentaje)`)
+	}
+
+	if (categoria === Categoria.Porcentaje) {
+		inputs_porcentajes_recientes.splice(inputs_porcentajes_recientes.indexOf(elemento), 1);
+		inputs_porcentajes_recientes.push(elemento);
+	}
 
 	elemento.value = elemento.value.slice(0, 3);
 
@@ -53,14 +73,8 @@ document.body.addEventListener("input", (evento) => {
 
 	if (elemento.value.length < 3) return;
 
-	let clasesParent;
-	if (!elemento.parentElement || !(clasesParent = Array.from(elemento.parentElement.classList))) {
-		// No sé si estoy usando los errors correctamente
-		throw new Error(`${elemento} no tiene parents`);
-	}
-
 	let maximo, minimo;
-	if (clasesParent.includes("puntajes")) {
+	if (categoria === Categoria.Puntaje) {
 		maximo = 850;
 		minimo = 150;
 	} else {
