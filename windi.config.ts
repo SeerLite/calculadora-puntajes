@@ -1,15 +1,11 @@
 import { defineConfig } from "windicss/helpers"
 
 export default defineConfig({
-	darkMode: true,
+	darkMode: "media",
 	extract: {
 		include: [
 			"./index.html",
 			"./ts/**/*.ts",
 		],
-		exclude: [
-			"./node_modules/**/*",
-			"./.git/**/*",
-		]
 	},
 });
