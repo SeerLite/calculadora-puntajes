@@ -4,6 +4,5 @@ module.exports = {
 	purge: [
 		"./static/**/*.html",
 		"./ts/**/*.ts",
-		"./css/**/*.css",
 	],
 };
