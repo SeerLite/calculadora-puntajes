@@ -6,7 +6,7 @@
     "start": "vite",
     "build": "vite build",
     "preview": "vite build && vite preview",
-    "deploy": "vite build --base=/calculadora-puntajes/ && gh-pages -d ./dist -m 'Update'"
+    "deploy": "vite build && gh-pages -d ./dist -m 'Update'"
   },
   "author": "SeerLite <seerlite@tuta.io>",
   "license": "AGPL-3.0-or-later",
