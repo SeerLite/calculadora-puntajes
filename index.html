@@ -5,37 +5,36 @@
 		<meta charset="utf-8">
 		<title>Calculadora de puntajes PDT</title>
 	</head>
-	<body class="m-4">
-		<h1 class="text-xl font-bold">Calculadora de puntajes PDT</h1>
+	<body class="m-8">
 		<div class="lg:grid lg:grid-cols-3 lg:gap-2">
 			<div class="porcentajes">
-				<h2 class="text-lg font-bold">Porcentajes de ponderación</h2>
+				<h2 class="text-lg font-bold mb-2">Porcentajes de ponderación</h2>
 
-				<label for="porcentaje-nem">Porcentaje NEM</label>
+				<label for="porcentaje-nem">NEM</label>
 				<br />
 				<input type="number" id="porcentaje-nem"
 				placeholder="0" value="20" min="0" max="100" />
 					<br />
 
-				<label for="porcentaje-ranking">Porcentaje Ranking</label>
+				<label for="porcentaje-ranking">Ranking</label>
 				<br />
 				<input type="number" id="porcentaje-ranking"
 				placeholder="0" value="20" min="0" max="100" />
 					<br />
 
-				<label for="porcentaje-lenguaje">Porcentaje Comprensión Lectora</label>
+				<label for="porcentaje-lenguaje">Comprensión Lectora</label>
 				<br />
 				<input type="number" id="porcentaje-lenguaje"
 				placeholder="0" value="20" min="0" max="100" />
 					<br />
 
-				<label for="porcentaje-matematicas">Porcentaje Matemáticas</label>
+				<label for="porcentaje-matematicas">Matemáticas</label>
 				<br />
 				<input type="number" id="porcentaje-matematicas"
 				placeholder="0" value="20" min="0" max="100" />
 					<br />
 
-				<label for="porcentaje-ciencias">Porcentaje Ciencias o Historia</label>
+				<label for="porcentaje-ciencias">Ciencias o Historia</label>
 				<br />
 				<input type="number" id="porcentaje-ciencias"
 				placeholder="0" value="20" min="0" max="100" />
@@ -43,42 +42,45 @@
 			</div>
 
 			<div class="puntajes">
-				<h2 class="text-lg font-bold">Puntajes obtenidos</h2>
+				<h2 class="text-lg font-bold mb-2">Puntajes obtenidos</h2>
 
-				<label for="puntaje-nem">Puntaje obtenido NEM</label>
+				<label for="puntaje-nem">NEM</label>
 				<br />
 				<input type="number" id="puntaje-nem"
 				placeholder="150" value="500" min="150" max="850" />
 					<br />
 
-				<label for="puntaje-ranking">Puntaje obtenido Ranking</label>
+				<label for="puntaje-ranking">Ranking</label>
 				<br />
 				<input type="number" id="puntaje-ranking"
 				placeholder="150" value="500" min="150" max="850" />
 					<br />
 
-				<label for="puntaje-lenguaje">Puntaje obtenido Comprensión Lectora</label>
+				<label for="puntaje-lenguaje">Comprensión Lectora</label>
 				<br />
 				<input type="number" id="puntaje-lenguaje"
 				placeholder="150" value="500" min="150" max="850" />
 					<br />
 
-				<label for="puntaje-matematicas">Puntaje obtenido Matemáticas</label>
+				<label for="puntaje-matematicas">Matemáticas</label>
 				<br />
 				<input type="number" id="puntaje-matematicas"
 				placeholder="150" value="500" min="150" max="850" />
 					<br />
 
-				<label for="puntaje-ciencias">Puntaje obtenido Ciencias o Historia</label>
+				<label for="puntaje-ciencias">Ciencias o Historia</label>
 				<br />
 				<input type="number" id="puntaje-ciencias"
 				placeholder="150" value="500" min="150" max="850" />
 					<br />
 			</div>
 			<div>
-				<p>Tu puntaje obtenido es</p>
+				<h2 class="text-lg font-bold mb-2">Puntaje ponderado</h2>
 				<br />
-				<div id="puntaje-obtenido" class="font-light text-8xl p-4 bg-gray-900 border-8 border-gray-900 inline-block">---</div>
+				<div id="puntaje-obtenido"
+				class="font-light text-8xl p-4 bg-gray-900 border-8 border-gray-900 inline-block">
+					---
+				</div>
 			</div>
 		</div>
 
