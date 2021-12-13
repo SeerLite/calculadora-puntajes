@@ -37,7 +37,7 @@ function actualizar_puntaje(materias: Array<Materia>): void {
 		throw new Error("Elemento #puntaje-obtenido no existe");
 	}
 
-	const puntaje_obtenido_str = String(puntaje_obtenido);
+	const puntaje_obtenido_str = String(Math.floor(puntaje_obtenido * 10) / 10);
 	if (salida.innerText !== puntaje_obtenido_str) {
 		salida.innerText = puntaje_obtenido_str;
 		destacar(salida);
