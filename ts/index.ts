@@ -129,7 +129,7 @@ for (const materia of materias) {
 		materias.splice(materias.indexOf(materia), 1);
 		materias.push(materia);
 
-		input_puntaje.value = input_puntaje.value.slice(0, 3);
+		input_porcentaje.value = input_porcentaje.value.slice(0, 3);
 		if (input_porcentaje.value.length >= 3) {
 			materia.clamp_porcentaje();
 		}
