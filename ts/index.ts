@@ -7,7 +7,7 @@ function clamp(input: number, min: number, max: number): number {
 
 function calcular_puntaje(materias: Array<Materia>): number {
 	let puntaje_final = 0;
-	for (let materia of materias) {
+	for (const materia of materias) {
 		puntaje_final += materia.puntaje * materia.porcentaje / 100;
 	}
 	return puntaje_final;
@@ -15,7 +15,7 @@ function calcular_puntaje(materias: Array<Materia>): number {
 
 function actualizar_puntaje(materias: Array<Materia>): void {
 	if (materias.reduce((acc, materia) => acc + materia.porcentaje, 0) !== 100) {
-		for (let materia of materias) {
+		for (const materia of materias) {
 			const diferencia = 100 - materias.reduce((acc, materia) => acc + materia.porcentaje, 0);
 			if (diferencia >= 0 || materia.porcentaje + diferencia >= 0) {
 				materia.porcentaje += diferencia;
@@ -77,7 +77,7 @@ class Materia {
 function obtener_inputs_de_materias(): Array<Materia> {
 	const nombres_materias = ["nem", "ranking", "lenguaje", "matematicas", "ciencias"];
 	const materias: Array<Materia> = [];
-	for (let nombre of nombres_materias) {
+	for (const nombre of nombres_materias) {
 		const input_puntaje =
 			document.getElementById(`puntaje-${nombre}`) as HTMLInputElement;
 		const input_porcentaje =
@@ -118,7 +118,7 @@ function clamp_input(input: HTMLInputElement, minimo: number, maximo: number): v
 	}
 }
 
-for (let materia of materias) {
+for (const materia of materias) {
 	const input_porcentaje = materia.elementos.porcentaje;
 	const input_puntaje = materia.elementos.puntaje;
 	input_porcentaje.addEventListener("input", (evento) => {
