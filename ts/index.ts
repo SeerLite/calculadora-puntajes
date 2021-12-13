@@ -14,15 +14,13 @@ function calcular_puntaje(materias: Array<Materia>): number {
 }
 
 function actualizar_puntaje(materias: Array<Materia>): void {
-	if (materias.reduce((acc, materia) => acc + materia.porcentaje, 0) !== 100) {
-		for (const materia of materias) {
-			const diferencia = 100 - materias.reduce((acc, materia) => acc + materia.porcentaje, 0);
-			if (diferencia >= 0 || materia.porcentaje + diferencia >= 0) {
-				materia.porcentaje += diferencia;
-				break;
-			} else {
-				materia.porcentaje = 0;
-			}
+	for (const materia of materias) {
+		const diferencia = 100 - materias.reduce((acc, materia) => acc + materia.porcentaje, 0);
+		if (diferencia >= 0 || materia.porcentaje + diferencia >= 0) {
+			materia.porcentaje += diferencia;
+			break;
+		} else {
+			materia.porcentaje = 0;
 		}
 	}
 
