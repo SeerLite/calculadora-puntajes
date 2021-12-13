@@ -1,6 +1,6 @@
 {
   "name": "calculadora-puntajes",
-  "description": "",
+  "description": "Calculadora de puntajes PDT 2021",
   "private": true,
   "scripts": {
     "start": "vite",
@@ -8,7 +8,7 @@
     "preview": "vite build && vite preview",
     "deploy": "vite build --base=/calculadora-puntajes/ && gh-pages -d ./dist -m 'Update'"
   },
-  "author": "",
+  "author": "SeerLite <seerlite@tuta.io>",
   "license": "AGPL-3.0-or-later",
   "devDependencies": {
     "autoprefixer": "^10.4.0",
