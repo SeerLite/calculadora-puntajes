@@ -1,5 +1,5 @@
 label {
-	@apply my-2 inline-block;
+	@apply my-2 block;
 }
 
 input {
