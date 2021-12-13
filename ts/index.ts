@@ -32,9 +32,9 @@ function actualizar_puntaje(materias: Array<Materia>): void {
 
 	const puntaje_obtenido: number = calcular_puntaje(materias);
 
-	const salida = document.getElementById("puntaje-obtenido");
+	const salida = document.getElementById("puntaje-ponderado");
 	if (!salida) {
-		throw new Error("Elemento #puntaje-obtenido no existe");
+		throw new Error("Elemento #puntaje-ponderado no existe");
 	}
 
 	const puntaje_obtenido_str = String(Math.floor(puntaje_obtenido * 10) / 10);
