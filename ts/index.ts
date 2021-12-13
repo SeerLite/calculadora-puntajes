@@ -65,12 +65,20 @@ class Materia {
 		this.elementos.puntaje.value = String(clamp(valor, 150, 850));
 	}
 
+	clamp_puntaje() {
+		this.puntaje = this.puntaje;
+	}
+
 	get porcentaje(): number {
 		return clamp(Number(this.elementos.porcentaje.value), 0, 100);
 	}
 
 	set porcentaje(valor: number) {
 		this.elementos.porcentaje.value = String(clamp(valor, 0, 100));
+	}
+
+	clamp_porcentaje() {
+		this.porcentaje = this.porcentaje;
 	}
 }
 
@@ -101,35 +109,38 @@ materias.reverse();
 
 actualizar_puntaje(materias);
 
-function clamp_input(input: HTMLInputElement, minimo: number, maximo: number): void {
-	input.value = input.value.slice(0, 3);
-
-	const valor = Number(input.value);
-	if (valor !== 0) {
-		input.value = String(valor);
-	}
-
-	if (input.value.length >= 3) {
-		if (valor > maximo) {
-			input.value = String(maximo);
-		} else if (valor < minimo) {
-			input.value = String(minimo);
-		}
-	}
-}
-
 for (const materia of materias) {
 	const input_porcentaje = materia.elementos.porcentaje;
 	const input_puntaje = materia.elementos.puntaje;
+
+	input_porcentaje.addEventListener("focus", input_porcentaje.select);
+
 	input_porcentaje.addEventListener("input", (evento) => {
 		materias.splice(materias.indexOf(materia), 1);
 		materias.push(materia);
-		clamp_input(input_porcentaje, 0, 100);
+
+		input_puntaje.value = input_puntaje.value.slice(0, 3);
+		if (input_porcentaje.value.length >= 3) {
+			materia.clamp_porcentaje();
+		}
 		actualizar_puntaje(materias);
 	});
 
+	input_porcentaje.addEventListener("blur", (evento) => {
+		materia.clamp_porcentaje();
+	});
+
+	input_puntaje.addEventListener("focus", input_puntaje.select);
+
 	input_puntaje.addEventListener("input", (evento) => {
-		clamp_input(input_puntaje, 150, 850);
+		input_puntaje.value = input_puntaje.value.slice(0, 3);
+		if (input_puntaje.value.length >= 3) {
+			materia.clamp_puntaje();
+		}
 		actualizar_puntaje(materias);
+	});
+
+	input_puntaje.addEventListener("blur", (evento) => {
+		materia.clamp_puntaje();
 	});
 }
