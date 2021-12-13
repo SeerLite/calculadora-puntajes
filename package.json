@@ -5,6 +5,7 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
+    "preview": "vite build && vite preview",
     "deploy": "vite build --base=/calculadora-puntajes/ && gh-pages -d ./dist -m 'Update'"
   },
   "author": "",
