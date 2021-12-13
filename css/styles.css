@@ -1,5 +1,6 @@
 input {
-	@apply bg-gray-900 border-2 border-gray-400 placeholder-gray-700 p-1.5;
+	@apply m-4 p-4 bg-gray-900 border-2 border-gray-400 placeholder-gray-700 text-2xl text-center;
+	width: calc(0.5rem + 3em);
 }
 
 /* No mostrar flechas en inputs numéricos */
