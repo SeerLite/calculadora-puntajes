@@ -5,6 +5,12 @@ function clamp(input: number, min: number, max: number): number {
 	return Math.min(Math.max(input, min), max);
 }
 
+function destacar(elemento: HTMLElement) {
+	const color_destacado = ["bg-gray-400", "text-green-900"];
+	elemento.classList.add(...color_destacado);
+	setTimeout(() => elemento.classList.remove(...color_destacado), 150);
+}
+
 function calcular_puntaje(materias: Array<Materia>): number {
 	let puntaje_final = 0;
 	for (const materia of materias) {
@@ -34,9 +40,7 @@ function actualizar_puntaje(materias: Array<Materia>): void {
 	const puntaje_obtenido_str = String(puntaje_obtenido);
 	if (salida.innerText !== puntaje_obtenido_str) {
 		salida.innerText = puntaje_obtenido_str;
-		const color_destacado = ["bg-gray-400", "text-green-900"];
-		salida.classList.add(...color_destacado);
-		setTimeout(() => salida.classList.remove(...color_destacado), 150);
+		destacar(salida);
 	}
 }
 
@@ -60,7 +64,11 @@ class Materia {
 	}
 
 	set puntaje(valor: number) {
-		this.elementos.puntaje.value = String(clamp(valor, 150, 850));
+		const valor_str = String(clamp(valor, 150, 850));
+		if (this.elementos.puntaje.value !== valor_str) {
+			this.elementos.puntaje.value = valor_str;
+			destacar(this.elementos.puntaje);
+		}
 	}
 
 	clamp_puntaje() {
@@ -72,7 +80,11 @@ class Materia {
 	}
 
 	set porcentaje(valor: number) {
-		this.elementos.porcentaje.value = String(clamp(valor, 0, 100));
+		const valor_str = String(clamp(valor, 0, 100));
+		if (this.elementos.porcentaje.value !== valor_str) {
+			this.elementos.porcentaje.value = valor_str;
+			destacar(this.elementos.porcentaje);
+		}
 	}
 
 	clamp_porcentaje() {
