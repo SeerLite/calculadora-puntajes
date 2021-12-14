@@ -72,6 +72,8 @@ class Materia {
 	}
 
 	clamp_puntaje() {
+		// TODO:
+		// eslint-disable-next-line no-self-assign
 		this.puntaje = this.puntaje;
 	}
 
@@ -88,6 +90,8 @@ class Materia {
 	}
 
 	clamp_porcentaje() {
+		// TODO:
+		// eslint-disable-next-line no-self-assign
 		this.porcentaje = this.porcentaje;
 	}
 }
