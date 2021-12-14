@@ -11,7 +11,7 @@ function destacar(elemento: HTMLElement) {
 	setTimeout(() => elemento.classList.remove(...color_destacado), 150);
 }
 
-function calcular_puntaje(materias: Array<Materia>): number {
+function calcular_puntaje(materias: Materia[]): number {
 	let puntaje_final = 0;
 	for (const materia of materias) {
 		puntaje_final += materia.puntaje * materia.porcentaje / 100;
@@ -19,7 +19,7 @@ function calcular_puntaje(materias: Array<Materia>): number {
 	return puntaje_final;
 }
 
-function actualizar_puntaje(materias: Array<Materia>): void {
+function actualizar_puntaje(materias: Materia[]): void {
 	for (const materia of materias) {
 		const diferencia = 100 - materias.reduce((acc, materia) => acc + materia.porcentaje, 0);
 		if (diferencia >= 0 || materia.porcentaje + diferencia >= 0) {
@@ -92,9 +92,9 @@ class Materia {
 	}
 }
 
-function obtener_inputs_de_materias(): Array<Materia> {
+function obtener_inputs_de_materias(): Materia[] {
 	const nombres_materias = ["nem", "ranking", "lenguaje", "matematicas", "ciencias"];
-	const materias: Array<Materia> = [];
+	const materias: Materia[] = [];
 	for (const nombre of nombres_materias) {
 		const input_puntaje =
 			document.getElementById(`puntaje-${nombre}`) as HTMLInputElement;
@@ -111,7 +111,7 @@ function obtener_inputs_de_materias(): Array<Materia> {
 	return materias;
 }
 
-const materias: Array<Materia> = obtener_inputs_de_materias();
+const materias: Materia[] = obtener_inputs_de_materias();
 
 // Más cercano a "de menos reciente a más reciente" al iniciar
 // Para que al iterarlas para ajustar sus porcentajes vaya del último al primero
