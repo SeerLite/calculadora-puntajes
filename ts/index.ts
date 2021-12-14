@@ -125,7 +125,7 @@ for (const materia of materias) {
 
 	input_porcentaje.addEventListener("focus", input_porcentaje.select);
 
-	input_porcentaje.addEventListener("input", (evento) => {
+	input_porcentaje.addEventListener("input", () => {
 		materias.splice(materias.indexOf(materia), 1);
 		materias.push(materia);
 
@@ -136,13 +136,13 @@ for (const materia of materias) {
 		actualizar_puntaje(materias);
 	});
 
-	input_porcentaje.addEventListener("blur", (evento) => {
+	input_porcentaje.addEventListener("blur", () => {
 		materia.clamp_porcentaje();
 	});
 
 	input_puntaje.addEventListener("focus", input_puntaje.select);
 
-	input_puntaje.addEventListener("input", (evento) => {
+	input_puntaje.addEventListener("input", () => {
 		input_puntaje.value = input_puntaje.value.slice(0, 3);
 		if (input_puntaje.value.length >= 3) {
 			materia.clamp_puntaje();
@@ -150,7 +150,7 @@ for (const materia of materias) {
 		actualizar_puntaje(materias);
 	});
 
-	input_puntaje.addEventListener("blur", (evento) => {
+	input_puntaje.addEventListener("blur", () => {
 		materia.clamp_puntaje();
 	});
 }
