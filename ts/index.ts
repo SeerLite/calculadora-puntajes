@@ -1,10 +1,6 @@
 import "virtual:windi.css"
 import "../css/styles.css"
-import {} from  "lodash-es"
-
-function clamp(input: number, min: number, max: number): number {
-	return Math.min(Math.max(input, min), max);
-}
+import { clamp } from  "lodash-es"
 
 function destacar(elemento: HTMLElement) {
 	const color_destacado = ["bg-gray-400", "text-green-900"];
