@@ -1,0 +1,8 @@
+postcss.config.ts
+
+move helper functions into the class of Materia?
+
+pug
+
+rerder things in html so that percent and puntaje of a single materia are in a single div
+use tabindex=something to keep tabbing like it is right now
